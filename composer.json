@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/GoDataFeed",
+    "type": "magento-module",
+    "license": "©GoDataFeed-All-rights-reserved",
+    "homepage": "",
+    "description": "A simple and affordable way to optimize your product listings, automate your datafeed submissions and drive more qualified, targeted traffic to your Website.",
+    "authors": [
+    {
+        "name": "GoDataFeedSupport",
+        "email": "support@godatafeed.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
