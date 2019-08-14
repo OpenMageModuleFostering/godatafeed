@@ -4,9 +4,9 @@
         <GoDataFeed_Services>
             <active>true</active>
             <codePool>local</codePool>
-			<!--<depends>-->
-           		<!--<Mage_Catalog />-->
-   			<!--</depends>-->
+			<depends>
+				<Mage_Api />
+   			</depends>
         </GoDataFeed_Services>
     </modules>
 </config>

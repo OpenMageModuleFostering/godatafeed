@@ -1,26 +1,40 @@
 <?xml version="1.0"?>
 <config>
-    <api>
-        <resources>
-            <catalog_product translate="title" module="catalog">
-                <title>GoDataFeed Product API</title>
-                <model>catalog/product_api</model>
+	<api>
+
+		<resources>
+
+			<godatafeed_services translate="title" module="services">
+				<title>GoDataFeed Product API</title>
+				<model>services/version_api</model>
+				<methods>
+					<version translate="title" module="services">
+						<title>Retrieve extension version</title>
+					</version>
+				</methods>
+			</godatafeed_services>
+
+			<godatafeed_services_catalog_product translate="title" module="services">
+				<title>GoDataFeed Product API</title>
+				<model>services/catalog_product_api</model>
 				<acl>catalog/product</acl>
 				<methods>
-					<count translate="title" module="catalog">
+					<product_count translate="title" module="services">
 						<title>Retrieve product count</title>
 						<acl>catalog/product/info</acl>
-					</count>
-					<extendedList translate="title" module="catalog">
+						<method>count</method>
+					</product_count>
+					<product_extendedList translate="title" module="services">
 						<title>Retrieve products list by filters with extended attributes</title>
 						<acl>catalog/product/info</acl>
-					</extendedList>
+						<method>extendedList</method>
+					</product_extendedList>
 				</methods>
-            </catalog_product>
-        </resources>
-        <!--<resources_alias>-->
-            <!--<product>catalog_product</product>-->
-        <!--</resources_alias>-->
-		<!--TODO FAULTS-->
-    </api>
+			</godatafeed_services_catalog_product>
+		</resources>
+
+		<!--<resources_alias>-->
+		<!--<product>catalog_product</product>-->
+		<!--</resources_alias>-->
+	</api>
 </config>

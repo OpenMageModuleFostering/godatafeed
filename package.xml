@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <package>
     <name>GoDataFeed</name>
-    <version>1.0.1</version>
+    <version>1.0.3</version>
     <stability>stable</stability>
     <license uri="http://www.godatafeed.com/aboutus.aspx">&#xA9;GoDataFeed All rights reserved</license>
     <channel>community</channel>
     <extends/>
     <summary>A simple and affordable way to optimize your product listings, automate your datafeed submissions and drive more qualified, targeted traffic to your Website.</summary>
     <description>This extension optimizes product retrieval while providing enhanced attributes information. Install this extension to fully benefit GoDataFeed services.</description>
-    <notes>No Notes</notes>
+    <notes>1.0.3</notes>
     <authors><author><name>GoDataFeedSupport</name><user>GoDataFeedSupport</user><email>support@godatafeed.com</email></author></authors>
-    <date>2012-02-06</date>
-    <time>19:47:22</time>
-    <contents><target name="magelocal"><dir name="GoDataFeed"><dir name="Services"><dir name="Model"><dir name="Catalog"><dir name="Product"><file name="Api.php" hash="75b40084552c9b8cdf65708fe6ce9296"/></dir></dir></dir><dir name="etc"><file name="api.xml" hash="565bc8cb3899d89f37c0cc27008958f4"/><file name="config.xml" hash="8ecde4bbb6d08c822c1173f279d21bca"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="GoDataFeed_Services.xml" hash="43db0e2dd6a412462d52e77143ec5cdc"/></dir></target></contents>
+    <date>2012-03-31</date>
+    <time>21:13:52</time>
+    <contents><target name="magelocal"><dir name="GoDataFeed"><dir name="Services"><dir name="Helper"><file name="Data.php" hash="fbbbbac77dc06cc167e5ab2d3bd69263"/></dir><dir name="Model"><dir name="Catalog"><dir name="Product"><file name="Api.php" hash="3869efbac04f4fe4cb775fa2c5c9cabc"/></dir></dir><dir name="Version"><file name="Api.php" hash="7d98c540f83e30e7672632c6a611c150"/></dir></dir><dir name="etc"><file name="api.xml" hash="22008e5eb33267d94da0707d9e63b3fe"/><file name="config.xml" hash="d2613958aded5625eb1759fa91dbaf14"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="GoDataFeed_Services.xml" hash="e2f0d059f7dcd4ed86519c397bb9c310"/></dir></target></contents>
     <compatible/>
     <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php></required></dependencies>
 </package>

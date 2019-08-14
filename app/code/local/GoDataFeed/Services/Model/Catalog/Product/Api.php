@@ -62,8 +62,14 @@ class GoDataFeed_Services_Model_Catalog_Product_Api extends Mage_Catalog_Model_P
 		$pageNumber,
 		$productsPerPage)
     {
-		$baseUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
-		$imageBaseURL = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."catalog/product";
+
+		if(empty($store)) {
+			$baseUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
+			$imageBaseURL = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."catalog/product";
+		} else {
+			$baseUrl = Mage::getModel('core/store')->load($store)->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
+			$imageBaseURL = Mage::getModel('core/store')->load($store)->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."catalog/product";
+		}
 
 		$resultItems = array();
 
