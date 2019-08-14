@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <package>
     <name>GoDataFeed</name>
-    <version>1.0.3</version>
+    <version>1.1.3</version>
     <stability>stable</stability>
-    <license uri="http://www.godatafeed.com/aboutus.aspx">&#xA9;GoDataFeed All rights reserved</license>
+    <license uri="http://www.godatafeed.com/supportedecommerce.aspx?sp=magento">&#xA9;GoDataFeed All rights reserved</license>
     <channel>community</channel>
     <extends/>
-    <summary>A simple and affordable way to optimize your product listings, automate your datafeed submissions and drive more qualified, targeted traffic to your Website.</summary>
-    <description>This extension optimizes product retrieval while providing enhanced attributes information. Install this extension to fully benefit GoDataFeed services.</description>
-    <notes>1.0.3</notes>
+    <summary>GoDataFeed&#x2019;s powerful, turn-key datafeed management solution empowers Magento merchants with an affordable and effective way to optimize and automate their datafeed marketing.</summary>
+    <description>This extension automates product retrieval from Magento while providing enhanced attribute information. Install this extension to streamline your channel feed management with GoDataFeed.</description>
+    <notes>1.1.3</notes>
     <authors><author><name>GoDataFeedSupport</name><user>GoDataFeedSupport</user><email>support@godatafeed.com</email></author></authors>
-    <date>2012-03-31</date>
-    <time>21:13:52</time>
-    <contents><target name="magelocal"><dir name="GoDataFeed"><dir name="Services"><dir name="Helper"><file name="Data.php" hash="fbbbbac77dc06cc167e5ab2d3bd69263"/></dir><dir name="Model"><dir name="Catalog"><dir name="Product"><file name="Api.php" hash="3869efbac04f4fe4cb775fa2c5c9cabc"/></dir></dir><dir name="Version"><file name="Api.php" hash="7d98c540f83e30e7672632c6a611c150"/></dir></dir><dir name="etc"><file name="api.xml" hash="22008e5eb33267d94da0707d9e63b3fe"/><file name="config.xml" hash="d2613958aded5625eb1759fa91dbaf14"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="GoDataFeed_Services.xml" hash="e2f0d059f7dcd4ed86519c397bb9c310"/></dir></target></contents>
+    <date>2013-06-15</date>
+    <time>15:18:06</time>
+    <contents><target name="magelocal"><dir name="GoDataFeed"><dir name="Services"><dir name="Helper"><file name="Data.php" hash="fbbbbac77dc06cc167e5ab2d3bd69263"/></dir><dir name="Model"><dir name="Api"><dir name="Resource"><dir name="Checkout"><file name="Product.php" hash="d03cd3c306e6b940c9d37ef780d76979"/></dir><file name="Checkout.php" hash="4f689b0150a47625e9b1912a50f99009"/><file name="Customer.php" hash="f9e722373eccc42a1ab5d1d1df8f62b4"/></dir></dir><dir name="Cart"><file name="Api.php" hash="858c1d1ec6ac2daeca1b5c94855bb7fd"/><dir name="Customer"><file name="Api.php" hash="79f65194334c0263b2b87f18c7642be4"/></dir><dir name="Payment"><file name="Api.php" hash="2251058e3f468f02b8f25cbb7a2603f5"/></dir><dir name="Product"><file name="Api.php" hash="b1ad852e70fb70604011ccf61ca9a28b"/></dir></dir><dir name="Catalog"><dir name="Product"><file name="Api.php" hash="91a6bb7a56d261d20da21a3bfe92d6e6"/></dir></dir><dir name="Method"><file name="OrderSync.php" hash="9a60ed4e0758255ada4b3a7e53f275f1"/></dir><dir name="Order"><file name="Payment.php" hash="b37fa553313e2ac70fa661c9bf3108c7"/></dir><dir name="Quote"><file name="Payment.php" hash="eac432f14ee163b3f3b04a0ef574853d"/></dir><file name="Quote.php" hash="5474009133786a34b088c15c29309cef"/><dir name="Sales"><dir name="Order"><dir name="Invoice"><file name="Api.php" hash="e1336ad995a06b739faf922b5a6781c0"/></dir></dir></dir><dir name="Service"><file name="Quote.php" hash="e480ad4fc4d4493ddbfb0b6f29ecf8a7"/></dir><dir name="Version"><file name="Api.php" hash="17cdaab8d006ed0e4eb020dc9972ef92"/></dir></dir><dir name="etc"><file name="api.xml" hash="63591e3dabe52d451047567197ffb599"/><file name="config.xml" hash="6cd9bf5b55bdef15b992dd803749f830"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="GoDataFeed_Services.xml" hash="e2f0d059f7dcd4ed86519c397bb9c310"/></dir></target></contents>
     <compatible/>
     <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php></required></dependencies>
 </package>

@@ -19,7 +19,7 @@ class GoDataFeed_Services_Model_Catalog_Product_Api extends Mage_Catalog_Model_P
 	const CATEGORY_SEPARATOR = ' > ';
 
 	public function count($filters, $stockQuantityFilterAmount, $store, $responseField)
-    {
+	{
 		$filteredProductsCollection = $this->getProductsFilteredByStockQuantity(
 			$filters,
 			$stockQuantityFilterAmount,
@@ -60,7 +60,10 @@ class GoDataFeed_Services_Model_Catalog_Product_Api extends Mage_Catalog_Model_P
 		$scrubAttributeSetName,
 		$scrubCustomAttribute,
 		$pageNumber,
-		$productsPerPage)
+		$productsPerPage,
+		$parentSKUConfig,
+        $additionalImagesConfig
+    )
     {
 
 		if(empty($store)) {
@@ -98,7 +101,11 @@ class GoDataFeed_Services_Model_Catalog_Product_Api extends Mage_Catalog_Model_P
 			foreach ($filteredProductsCollection as $productToRetrieve) {
 
 				$resultItem = array();
+				$productIdToRetrieve = $productToRetrieve->getId();
 
+				// isSalable
+				$resultItem["isSalable"] = Mage::getModel(self::CATALOG_PRODUCT_MODEL)->load($productIdToRetrieve)->isSalable();
+				
 				// STANDARD ATTRIBUTES
 				if(!empty($attributes) && is_array($attributes)) {
 					foreach($attributes as $attribute)
@@ -226,6 +233,17 @@ class GoDataFeed_Services_Model_Catalog_Product_Api extends Mage_Catalog_Model_P
 					}
 				}
 
+				// RETRIEVE CONFIGURABLE ITEMS PARENT IDS
+				// We need to retrieve parent ids if either of the following fields are requested :
+				// - absolute url
+				// - absolute image url
+				// - parent SKU
+				$parentSKURequested = $parentSKUConfig[0];
+				$configurableItemsParentIds = array();
+				if($absoluteUrlRequested || $absoluteImageUrlRequested || $parentSKURequested) {
+					$configurableItemsParentIds = Mage::getModel(self::CONFIGURABLE_PRODUCT_MODEL)->getParentIdsByChild($productIdToRetrieve);
+				}
+
 				// ABSOLUTE URL & IMAGE
 				if($absoluteUrlRequested || $absoluteImageUrlRequested) {
 
@@ -237,10 +255,8 @@ class GoDataFeed_Services_Model_Catalog_Product_Api extends Mage_Catalog_Model_P
 					//If it's a simple product and it's NOT visible then we are getting the URL/ImageURL from the parent (configurable/grouped) product
 					if($productToRetrieve->getTypeId() == 'simple' && $productToRetrieve->getData(self::VISIBILITY_FIELD) == 1)
 					{
-						$productIdToRetrieve = $productToRetrieve->getId();
-
 						//Checking if the product is a child of a "configurable" product
-						$parentProductIds = Mage::getModel(self::CONFIGURABLE_PRODUCT_MODEL)->getParentIdsByChild($productIdToRetrieve);
+						$parentProductIds = $configurableItemsParentIds;
 
 						//Checking if the product is a child of a "grouped" product
 						if(sizeof($parentProductIds) < 1) {
@@ -276,7 +292,31 @@ class GoDataFeed_Services_Model_Catalog_Product_Api extends Mage_Catalog_Model_P
 					}
 				}
 
-				$resultItems[] = $resultItem;
+				// CONFIGURABLE ITEMS PARENT SKU
+				if($parentSKURequested) {
+
+					$parentSKUS = array();
+					foreach ($configurableItemsParentIds as $parentId) {
+						$parentSKUS[] = Mage::getModel(self::CATALOG_PRODUCT_MODEL)->load($parentId)->getData('sku');
+					}
+
+					$responseField = $parentSKUConfig[1];
+					$resultItem[$responseField] = $parentSKUS;
+				}
+
+                // ADDITIONAL IMAGES
+                $additionalImagesRequested = $additionalImagesConfig[0];
+                if($additionalImagesRequested) {
+
+                    $additionalImageURLs = array();
+                    foreach (Mage::getModel('catalog/product')->load($productIdToRetrieve)->getMediaGalleryImages() as $image) {
+                        $additionalImageURLs[] = $image['url'];
+                    }
+
+                    $resultItem[$additionalImagesConfig[1]] = $additionalImageURLs;
+                }
+
+                $resultItems[] = $resultItem;
 			}
 		}
 
@@ -361,8 +401,33 @@ class GoDataFeed_Services_Model_Catalog_Product_Api extends Mage_Catalog_Model_P
 	//Scrubbing various unwanted characters
 	private function scrubData($fieldValue)
 	{
+		$fieldValue = str_replace(chr(1), "", $fieldValue);
+		$fieldValue = str_replace(chr(2), "", $fieldValue);
+		$fieldValue = str_replace(chr(3), "", $fieldValue);
+		$fieldValue = str_replace(chr(4), "", $fieldValue);
+		$fieldValue = str_replace(chr(5), "", $fieldValue);
+		$fieldValue = str_replace(chr(6), "", $fieldValue);
+		$fieldValue = str_replace(chr(7), "", $fieldValue);
+		$fieldValue = str_replace(chr(8), " ", $fieldValue);
+		$fieldValue = str_replace(chr(9), "", $fieldValue);
 		$fieldValue = str_replace(chr(10), " ", $fieldValue);
+		$fieldValue = str_replace(chr(11), " ", $fieldValue);
 		$fieldValue = str_replace(chr(13), " ", $fieldValue);
+		$fieldValue = str_replace(chr(17), " ", $fieldValue);
+		$fieldValue = str_replace(chr(18), " ", $fieldValue);
+		$fieldValue = str_replace(chr(19), " ", $fieldValue);
+		$fieldValue = str_replace(chr(20), " ", $fieldValue);
+		$fieldValue = str_replace(chr(21), " ", $fieldValue);
+		$fieldValue = str_replace(chr(22), " ", $fieldValue);
+		$fieldValue = str_replace(chr(23), " ", $fieldValue);
+		$fieldValue = str_replace(chr(24), " ", $fieldValue);
+		$fieldValue = str_replace(chr(25), " ", $fieldValue);
+		$fieldValue = str_replace(chr(26), " ", $fieldValue);
+		$fieldValue = str_replace(chr(27), " ", $fieldValue);
+		$fieldValue = str_replace(chr(28), " ", $fieldValue);
+		$fieldValue = str_replace(chr(29), " ", $fieldValue);
+		$fieldValue = str_replace(chr(30), " ", $fieldValue);
+		$fieldValue = str_replace(chr(31), " ", $fieldValue);
 		$fieldValue = str_replace("\r", " ", $fieldValue);
 		$fieldValue = str_replace("\n", " ", $fieldValue);
 		$fieldValue = str_replace("\r\n", " ", $fieldValue);
