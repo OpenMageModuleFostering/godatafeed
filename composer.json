@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/GoDataFeed",
+    "name": "OpenMageModuleFostering\/GoDataFeed",
     "type": "magento-module",
-    "license": "©GoDataFeed-All-rights-reserved",
+    "license": "\u00a9GoDataFeed-All-rights-reserved",
     "homepage": "",
-    "description": "GoDataFeed’s powerful, turn-key datafeed management solution empowers Magento merchants with an affordable and effective way to optimize and automate their datafeed marketing.",
+    "description": "GoDataFeed\u2019s powerful, turn-key datafeed management solution empowers Magento merchants with an affordable and effective way to optimize and automate their datafeed marketing.",
     "authors": [
-    {
-        "name": "GoDataFeedSupport",
-        "email": "support@godatafeed.com"
-    }
-],
+        {
+            "name": "GoDataFeedSupport",
+            "email": "support@godatafeed.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
